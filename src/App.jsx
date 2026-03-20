@@ -3,6 +3,7 @@ import Starfield from "./components/Starfield";
 import Sidebar from "./components/Sidebar";
 import Topbar from "./components/Topbar";
 import ChatWindow from "./components/ChatWindow";
+import InputBox from "./components/InputBox";
 
 const App = () => {
   // 📱 Sidebar state (for mobile drawer)
@@ -76,6 +77,12 @@ This is where your Groq-powered intelligence will respond with knowledge about t
             messages={messages}
             isLoading={isLoading}
             onSuggestionClick={handleSuggestionClick}
+          />
+
+          {/* Input Box */}
+          <InputBox
+            onSend={handleSend}
+            isLoading={isLoading}
           />
         </div>
       </div>
