@@ -4,6 +4,7 @@ import Sidebar from "./components/Sidebar";
 import Topbar from "./components/Topbar";
 import ChatWindow from "./components/ChatWindow";
 import InputBox from "./components/InputBox";
+import { sendMessageToGroq } from "./services/api";
 
 const App = () => {
   // 📱 Sidebar state (for mobile drawer)
@@ -29,27 +30,39 @@ const App = () => {
   };
 
   // 🚀 Send message (API integration comes next)
-  const handleSend = (text) => {
-    if (!text.trim()) return;
+  const handleSend = async (text) => {
+  if (!text.trim() || isLoading) return;
 
-    // Add user message
-    setMessages((prev) => [...prev, { role: "user", content: text }]);
+  const userMessage = { role: "user", content: text };
 
-    // Simulate loading (replace with Groq later)
-    setIsLoading(true);
+  // Add user message
+  setMessages((prev) => [...prev, userMessage]);
 
-    setTimeout(() => {
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "assistant",
-          content: `🌌 **Cosmic Insight:** You asked about "${text}".  
-This is where your Groq-powered intelligence will respond with knowledge about the universe.`,
-        },
-      ]);
-      setIsLoading(false);
-    }, 1000);
-  };
+  setIsLoading(true);
+
+  try {
+    const response = await sendMessageToGroq([
+      ...messages,
+      userMessage,
+    ]);
+
+    setMessages((prev) => [
+      ...prev,
+      { role: "assistant", content: response },
+    ]);
+  } catch (error) {
+    setMessages((prev) => [
+      ...prev,
+      {
+        role: "assistant",
+        content:
+          "⚠️ Signal lost in deep space. Please try again.",
+      },
+    ]);
+  }
+
+  setIsLoading(false);
+};
 
   return (
     <div className="relative flex min-h-screen bg-black text-white">
