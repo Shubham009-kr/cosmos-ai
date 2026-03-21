@@ -4,14 +4,13 @@ import { Send } from "lucide-react";
 const InputBox = ({ onSend, isLoading }) => {
   const [input, setInput] = useState("");
 
-  // ✍️ Auto resize textarea
+  // Auto resize inputbox
   const handleInput = (e) => {
     setInput(e.target.value);
     e.target.style.height = "auto";
     e.target.style.height = Math.min(e.target.scrollHeight, 120) + "px";
   };
 
-  // ⌨️ Handle Enter key
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
@@ -19,7 +18,6 @@ const InputBox = ({ onSend, isLoading }) => {
     }
   };
 
-  // 🚀 Send message
   const handleSend = () => {
     if (!input.trim() || isLoading) return;
 
@@ -33,7 +31,6 @@ const InputBox = ({ onSend, isLoading }) => {
       <div className="flex items-end gap-2 bg-[#0d1826] border border-[rgba(100,160,255,0.12)]
         rounded-xl px-3 py-2 focus-within:border-blue-400 transition-all">
 
-        {/* TEXTAREA */}
         <textarea
           value={input}
           onChange={handleInput}
@@ -44,7 +41,6 @@ const InputBox = ({ onSend, isLoading }) => {
           placeholder:text-[#3a5070] max-h-[120px]"
         />
 
-        {/* SEND BUTTON */}
         <button
           onClick={handleSend}
           disabled={isLoading || !input.trim()}
@@ -57,7 +53,7 @@ const InputBox = ({ onSend, isLoading }) => {
         </button>
       </div>
 
-      {/* FOOTER */}
+      {/* Footer */}
       <div className="flex justify-between items-center mt-2 text-xs text-[#3a5070]">
         <span>
           Press <kbd className="px-1 border rounded">Enter</kbd> to send ·{" "}

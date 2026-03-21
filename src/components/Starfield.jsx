@@ -63,7 +63,6 @@ const Starfield = () => {
 
   return (
     <div className="fixed inset-0 z-0 pointer-events-none bg-[#020408]">
-      {/* Nebula glow layers */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_120%_80%_at_30%_20%,rgba(79,143,255,0.06)_0%,transparent_60%)]"></div>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_75%_70%,rgba(123,94,167,0.08)_0%,transparent_55%)]"></div>
 

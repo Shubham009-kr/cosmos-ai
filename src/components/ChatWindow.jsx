@@ -11,7 +11,7 @@ const ChatWindow = ({ messages, isLoading, onSuggestionClick }) => {
   return (
     <div className="flex-1 overflow-y-auto px-4 md:px-6 py-6 flex flex-col gap-6">
 
-      {/* 🌌 Welcome Screen */}
+      {/* Welcome Screen */}
       {messages.length === 0 && (
         <div className="flex flex-col items-center justify-center text-center mt-10 animate-fadeIn">
 
@@ -53,7 +53,7 @@ const ChatWindow = ({ messages, isLoading, onSuggestionClick }) => {
         </div>
       )}
 
-      {/* 💬 Messages */}
+      {/* Messages */}
       {messages.map((msg, index) => (
         <div
           key={index}
@@ -85,7 +85,7 @@ const ChatWindow = ({ messages, isLoading, onSuggestionClick }) => {
         </div>
       ))}
 
-      {/* ⏳ Typing Indicator */}
+      {/* Typing State */}
       {isLoading && (
         <div className="flex gap-2 items-center">
           <div className="w-8 h-8 flex items-center justify-center rounded-md bg-blue-500/20 border border-blue-400">
@@ -104,7 +104,6 @@ const ChatWindow = ({ messages, isLoading, onSuggestionClick }) => {
   );
 };
 
-// ✨ Text formatting (bold, italic, code)
 const formatText = (text) => {
   return text
     .replace(/\*\*(.*?)\*\*/g, "<strong class='text-blue-300'>$1</strong>")

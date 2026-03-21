@@ -6,10 +6,8 @@ const Topbar = ({ onClear, onMenuClick }) => {
       border-b border-[rgba(100,160,255,0.12)]
       bg-[rgba(7,13,24,0.7)] backdrop-blur-md">
 
-      {/* LEFT */}
       <div className="flex items-center gap-3">
 
-        {/* MOBILE MENU BUTTON */}
         <button
           onClick={onMenuClick}
           className="md:hidden text-white"
@@ -28,7 +26,6 @@ const Topbar = ({ onClear, onMenuClick }) => {
         </span>
       </div>
 
-      {/* RIGHT */}
       <button
         onClick={onClear}
         className="flex items-center gap-2 px-3 py-1.5 rounded-md text-sm
